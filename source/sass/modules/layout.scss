@@ -1,0 +1,18 @@
+#lienzoB{
+  position: relative;
+  right: 0;
+  transition: all 0.35s ease-in-out;
+  overflow: hidden;
+  section{
+    padding: 20px 0;
+    height: 500px;
+    background-color: steelblue;
+    &:last-child{
+      background-color: orange;
+    }
+  }
+}
+
+//Secciones
+@import "sections/header";
+@import "sections/footer";

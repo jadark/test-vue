@@ -1,0 +1,148 @@
+//Header
+#hold-mobile {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9;
+  display: none;
+  background-color:rgba(255, 255, 255, 0);
+}
+.header{
+  position: relative;;
+  width: 100%;
+  top:0;
+  font-size: 0;
+  padding: 22px 0;
+  background-color: $blue;
+  z-index: 100;
+  box-shadow: 0 0 15px -4px transparent;
+  transition: all .5s  ease-in-out;
+  &.fix-header{
+    position: fixed;
+    z-index: 200;
+    transition: all .5s  ease-in-out;
+  }
+  &.noMenu{
+    z-index: 99;
+    .logo{
+      width: 100%;
+      text-align: right;
+    }
+  }
+  .logo{
+    display: inline-block;
+    vertical-align: middle;
+    width: 40%;
+    .link{
+      display: inline-block;
+      position: relative;
+      &:before{
+        content: '';
+        display: block;
+        width: 319px;
+        height: 60px;
+        position: absolute;
+        left: 0;
+        top:0;
+        background-image: url($url+"/documents/80379/4627449/isotipo_movistar.png/5a558b0f-77b7-4eb8-b586-94c0901f2503?t=1475704281603");
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: all .2s  ease-in-out;
+      }
+    }
+    img{
+      opacity: 1;
+      transition: all .2s  ease-in-out;
+    }
+  }
+  .nav{
+    display: inline-block;
+    vertical-align: middle;
+    width: 60%;
+    text-align: right;
+    transition: height .3s  ease-in-out;
+    ul{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      margin: 0 4px;
+      padding: 0 10px;
+      display: inline-block;
+    }
+    .menu-link{
+      display: inline-block;
+      font-size: 18px;
+      color:#ffffff;
+      text-decoration: none;
+      opacity: .8;
+      transition: all .2s ease-in-out;
+      font-family: $font-text-regular;
+      cursor: pointer;
+      &:hover{
+        opacity: 1;
+      }
+      &.active{
+        opacity: 1;
+        color:#ffffff;
+        transition: all .2s  ease-in-out;
+      }
+    }
+  }
+}
+
+// Hamburguesa Menu
+.hamburger-menu {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  margin-top: -11px;
+  width: $bar-width;
+  height: $bar-height + $bar-spacing*2;
+  cursor: pointer;
+  display: none;
+}
+.bar,
+.bar:after,
+.bar:before {
+  width: $bar-width;
+  height: $bar-height;
+}
+.bar {
+  position: relative;
+  transform: translateY($bar-spacing);
+  background: #ffffff;
+  transition: all 0ms 300ms;
+
+  &.animate {
+    background: transparent;
+  }
+}
+
+.bar:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: $bar-spacing;
+  background: #ffffff;
+  transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.bar:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: $bar-spacing;
+  background: #ffffff;
+  transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.bar.animate:after {
+  top: 0;
+  transform: rotate(45deg);
+  transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);;
+}
+.bar.animate:before {
+  bottom: 0;
+  transform: rotate(-45deg);
+  transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);;
+}
