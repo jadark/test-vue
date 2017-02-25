@@ -21,6 +21,7 @@ var app = new Vue({
           .then(function(response) {
             this.personas = response.body.results
             console.log(response);
+            document.getElementById('buscando').style.display = "none";
           });
     }
   },
@@ -31,7 +32,7 @@ var app = new Vue({
         return nameComplete.indexOf(this.search.toLowerCase()) > -1
       })
     }
-  }
+  },
 })
 
 //Si queremos mostrar el json en el HTML
