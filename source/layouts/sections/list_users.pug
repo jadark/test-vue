@@ -1,3 +1,21 @@
 #app
-  pre.
-    \n  {{$data | json }}
+  input#searchUser(type='text', v-model='search', placeholder="Busca al usuario de su preferencia")
+  br
+  .container
+    #itemList(v-for="persona in filteredItems")
+      .col-md-4.col-sm-4.col-xs-6
+        .card
+          .card-image.waves-effect.waves-block.waves-light
+            img.activator(v-bind:src="persona.picture.large")
+          .card-content
+            span.card-title.activator.grey-text.text-darken-4
+              | {{persona.name.first | capitalize}} {{persona.name.last | capitalize}}
+              //- i.material-icons.right more_vert
+            p
+              a(v-bind:href="'mailto:' + persona.email") {{persona.email}}
+          //- .card-reveal
+          //-   span.card-title.grey-text.text-darken-4
+          //-     | Card Title
+          //-     i.material-icons.right close
+          //-   p
+          //-     | Here is some more information about this product that is only revealed once clicked on.
