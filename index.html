@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Handlebars Test</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <input type="text" v-model="newtask" placeholder="Añadir una nueva tarea">
+    <input v-if="newtask" type="submit" value="Añadir Tarea" @click="saveTask(newtask)">
+    <p v-if="newtask">{{nombre}}</p>
+    <ul v-for="tarea in tareas">
+      <li>{{tarea.nombre}} <a href="#" v-on:click="deleteTask(tarea)" >Delete</a></li>
+    </ul>
+    <label v-if="active == 9 ">Solo se muestra si es igual a 9</label>
+
+    <pre>
+      {{$data | json }}
+    </pre>
+  </div>
+
+
+  <script src="https://unpkg.com/vue@2.1.10/dist/vue.js" type="text/javascript">
+  </script>
+  <script src="http://localhost:8080/webpack-dev-server.js" type="text/javascript"></script>
+  <script src="bundle.js" type="text/javascript"></script>
+</body>
+</html>
