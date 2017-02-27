@@ -1,0 +1,16 @@
+---
+tituloCNE: Lienzo en Blanco
+tituloPagina: Nombre Listado de Páginas
+urlCMS: http://cms.movistar.com.pe/web/guest-staging/movil/postpago/4g-ilimitado
+variante: Variante principal
+version: 000292
+ubiContenido: Movil/Productos/Postpago/4G ilimitado
+ubiMultimedia: Movil/Productos/Postpago/4G ilimitado
+external: http://servicios.movistar.com.pe/filesPlanesDisponibles
+comentarios: Comentarios de prueba pe
+# http://yaml.org/type/map.html -----------------------------------------------#
+
+
+# http://yaml.org/type/timestamp.html -----------------------------------------#
+timestamp:
+  canonical: 2001-12-15T02:59:43.1Z

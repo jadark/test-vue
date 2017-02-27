@@ -1,0 +1,27 @@
+.portlet-dockbar, .portlet-borderless-bar, .lfr-meta-actions, .modal-hidden, html.aui{
+  display: none;
+}
+.portlet-dockbar .navbar .collapse{
+  display: block;
+}
+
+.aui{
+  .portlet-dockbar{
+    position: relative !important;
+  }
+  .portlet-dockbar, .portlet-borderless-bar, .lfr-meta-actions{
+    display: block;
+  }
+  .portlet-dockbar .navbar .collapse{
+    display: block;
+  }
+  .modal{
+    display: block;
+    &.modal-hidden{
+      display: none;
+    }
+  }
+   .dockbar.navbar-static-top .collapse{
+     display: block;
+   }
+}
