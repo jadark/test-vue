@@ -1,0 +1,34 @@
+#app
+  .container
+    .row
+      .col.s6
+        h3 Equipos de la champions
+        select#tipoplan(style="display:block")
+
+        span Selected: {{ idTipoPlan }}
+
+        select#precioplan(style="display:block")
+          option(val="") Escoge un Precio del Plan
+        span Selected: {{ idPlan }}
+
+        #lala(v-for="equipo in equipos")
+          .col-md-4.col-sm-4.col-xs-6
+            .card
+              template(v-for="tipoPlan in equipo.TipoPlanes", v-if="tipoPlan.IdTipoPlan == idTipoPlan")
+                h5 {{equipo.MarcaEquipo}} {{equipo.ModeloEquipo}}
+                ul
+                  li {{tipoPlan.IdTipoPlan}}
+                  li {{tipoPlan.NombreTipoPlan}}
+                template(v-for="plan in tipoPlan.Planes", v-if="plan.IdPlan == idPlan")
+                  ul
+                    li
+                      p {{plan.IdPlan}}
+                      p {{plan.NombrePlan}}
+                      p Precio Online; {{plan.PrecioOnline | showPrice}}
+                      p Precio PrecioTienda; {{plan.PrecioTienda | showPrice}}
+                      template(v-if="plan.EnlaceTienda != ''")
+                        a(:href="plan.EnlaceTienda", target="_blank") {{plan.EnlaceTienda}}
+                      template(v-else)
+                        p No hay link de tienda
+      .col.s6
+        pre(style="font-size:1rem") {{$data}}

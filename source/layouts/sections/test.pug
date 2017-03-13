@@ -1,0 +1,54 @@
+#app.container
+  p {{$data}}
+
+  p {{team ? 'Bievenidos' : 'Bienvenido'}}, {{this.name}}: {{reverseName}}
+  h5(v-text="this.name + ': ' + reverseName")
+
+  select(v-model='selected', style="display:block")
+    option(v-for='option in options', :value='option.value')
+      | {{ option.text }}
+  span Selected: {{ selected }}
+
+  h4 Todas las tareas
+  ul
+    li(v-for="(task, index) in tareas")
+      del(v-if="!task.pendiente") {{index + 1}}: {{task.title}}
+      template(v-else) {{index + 1}}: {{task.title}}
+
+  template(v-if="tareasPendiente.length")
+    h4 Todas Pendientes
+    ul
+      li(v-for="task in tareasPendiente") {{task.title}}
+
+  ul
+    li(v-for="(value, key, index) in user") {{index+1}}.- {{key}}: {{value}}
+
+
+  form(action='#')
+    .row
+      .input-field.col.s6
+        input#test2(type='radio', :value="1", v-model="vue.exp")
+        label(for='test2') Si
+      .input-field.col.s6
+        input#test3(type='radio', :value="0", v-model="vue.exp")
+        label(for='test3') No
+    template(v-if="vue.exp")
+      .row
+        .input-field.col.s6
+          input#first_name.validate(type='text', v-model="vue.years")
+          label.active(for='first_name') First Name
+        .input-field.col.s6
+          input#last_name.validate(type='text')
+          label(for='last_name') Last Name
+      .row(v-if="vue.years < 2")
+        .input-field.col.s12
+          //- textarea#textarea1(v-model="vue.description",:class="{'invalid': descriptorError != null}")
+          textarea#textarea1(v-model="vue.description",:class="descriptorClasses")
+          label(for='textarea1', :style="descriptorStyles") Que te motivo?
+        .input-field.col.s12
+          p(v-if="descriptorError != ''") {{descriptorError}}
+
+      .row(v-else)
+        .input-field.col.s12
+          textarea#textarea1.materialize-textarea(v-model="vue.description")
+          label(for='textarea1') Cuentanos tu experiencia

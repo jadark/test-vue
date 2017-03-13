@@ -2,7 +2,7 @@
   input#searchUser(type='text', v-model='search', placeholder="Busca al usuario de su preferencia")
   br
   .container
-    #buscando.text-center
+    #loading.text-center
       h2 Buscando Usuarios...
       img(src="http://www.dinosaurios.top/wp-content/uploads/2016/05/Gifs-dinosaurios-de-risa-dinosaurios.top-6.gif", alt="")
     #itemList(v-for="persona in filteredItems")
@@ -13,6 +13,8 @@
           .card-content
             span.card-title.activator.grey-text.text-darken-4
               | {{persona.name.first | capitalize}} {{persona.name.last | capitalize}}
-              //- i.material-icons.right more_vert
             p
-              a(v-bind:href="'mailto:' + persona.email") {{persona.email}}
+              a(v-bind:href="'mailto:' + persona.email", target="_blank") {{persona.email}}
+
+  pre.
+    {{$data | json }}

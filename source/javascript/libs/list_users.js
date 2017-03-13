@@ -21,7 +21,7 @@ var app = new Vue({
           .then(function(response) {
             this.personas = response.body.results
             console.log(response);
-            document.getElementById('buscando').style.display = "none";
+            document.getElementById('loading').style.display = "none";
           });
     }
   },
