@@ -51,14 +51,8 @@ var app = new Vue({
           .then(function(response) {
             this.equipos = response.body.Equipos
             console.log(response);
-            // document.getElementById('loading').style.display = "none";
           });
     }
-  },
-  computed:{
-    // filterSelect: function() {
-    //   return alert(this.idTipoPlan);
-    // },
   }
 });
 
@@ -75,9 +69,10 @@ $(selectTipoplan).on('change', function(){
     selectPrecioPlan.innerHTML = planesPortabilidad;
   }else if (valueSelected == "28") {
     selectPrecioPlan.innerHTML = planesRenovacion;
-  }else if (valueSelected == "9") {
-    selectPrecioPlan.innerHTML = planesPrepago;
   }
+  // else if (valueSelected == "9") {
+  //   selectPrecioPlan.innerHTML = planesPrepago;
+  // }
   $(selectPrecioPlan).find("option:selected").trigger("change")
 });
 
@@ -89,3 +84,6 @@ $(selectPrecioPlan).on('change', function(){
 });
 
 $(selectTipoplan).find("option:selected").trigger("change")
+
+// Selected Matiralieze
+$('select').material_select();
