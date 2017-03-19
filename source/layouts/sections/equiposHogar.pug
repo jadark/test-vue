@@ -1,0 +1,32 @@
+#app
+  .container
+    .row
+      .col.s6
+        h3 Equipos Hogar
+        
+        ul
+          li(v-for="(value, key, index) in equipos" v-if="key == '21744kiw'")
+            p 
+            p {{value.codigo}}
+            p {{value.nombre}}
+            p {{value.precio}}
+            p {{value.precio_tipo}}
+            template(v-if="value.oferta_precio")
+              p Existe ofert
+            template(v-else)
+              p NOOOOOOOO Existe ofert
+          
+          li(v-for="(value, key, index) in equipos" v-if="key == '22509v2'")
+            p {{value.codigo}}
+            p {{value.nombre}}
+            p {{value.precio}}
+            p {{value.precio_tipo}}
+            template(v-if="value.oferta_precio")
+              p Existe ofert
+              p {{value.oferta_precio}}
+            template(v-else)
+              p NOOOOOOOO Existe ofert
+          
+      .col.s6
+        pre(style="font-size:1rem") {{$data}}
+        
