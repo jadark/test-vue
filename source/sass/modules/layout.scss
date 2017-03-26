@@ -16,6 +16,15 @@
   padding: 10px 10%;
   font-size: 24px;
 }
+.list-group{
+  .list-group-item{
+    .completado{
+      text-decoration: line-through;
+      font-style: italic;
+      color: gray;
+    }
+  }
+}
 //Secciones
 @import "sections/header";
 @import "sections/footer";

@@ -1,0 +1,16 @@
+#app
+  .container
+    .row
+      .col.s6
+        ul
+          li(v-for="(value, key, index) in productos", v-if="key == '21744'")
+            p Index: {{index+1}}
+            p Codigo: {{value.codigo}}
+            p Nombre: {{value.nombre}}
+            p Tipo: {{value.tipo}}
+            p Precio: {{value.precio}}
+            p Precio Tipo: {{value.precio_tipo}}
+            p Instalacion Contado: {{value.instalacion_contado}}
+
+      .col.s6
+        pre(style="font-size:1rem") {{$data}}
