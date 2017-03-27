@@ -108,8 +108,9 @@ logs
 *.log
 
 # Dependency directory
-node_modules
+node_modules/
 
 # project
 dist/
+functions/
 yarn.lock

@@ -109,11 +109,7 @@ gulp.task('images', function() {
 gulp.task('plugins', function() {
     gulp.src(
           [
-            './source/javascript/plugins/jquery.1.10.1.min.js',
-            './source/javascript/plugins/classList.min.js',//Le damos soporte a classList
-            './source/javascript/plugins/fix_liferay.js',//Vemos nuestra versión en el CMS
-            './source/javascript/plugins/hammer.js'//Eventos Touch
-          ]
+            './source/javascript/plugins/jquery.1.10.1.min.js'          ]
         )
         .pipe(concat('vendor_all.js') )
         .pipe(uglify({
