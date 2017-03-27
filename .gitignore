@@ -112,5 +112,5 @@ node_modules/
 
 # project
 dist/
-functions/
+functions/node_modules/
 yarn.lock
