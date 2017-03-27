@@ -3,7 +3,7 @@ html(lang="es-ES")
   head
     meta(charset='utf-8')
     meta(name='viewport' ,content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"')
-    title #{data.tituloCNE} | Movistar
+    title #{data.tituloCNE}
     meta(name='description', content="Movistar")
     meta(name='keywords', content="")
     meta(name='author', content="")
@@ -21,7 +21,7 @@ html(lang="es-ES")
     meta(http-equiv='Cache-Control', content='no-cache, mustrevalidate')
     meta(http-equiv='Pragma', content='no-cache')
     //- Favicon
-    link(href="http://www.movistar.com.pe/colportal-peru-v2-theme/images/favicon.ico", rel='shortcut icon', type='image/x-icon')
+    //- link(href="//www.movistar.com.pe/colportal-peru-v2-theme/images/favicon.ico", rel='shortcut icon', type='image/x-icon')
     //-Css a Usar
     link(rel="stylesheet", href="http://getbootstrap.com/dist/css/bootstrap.min.css")
     link(rel='stylesheet', href='css/style.css')
@@ -30,20 +30,21 @@ html(lang="es-ES")
   body
     - url = "http://cms.movistar.com.pe"
     //- url = ""
-    #lienzoB
+    #app
       block header
       #container
         block content
-
-
+      
       block footer
 
 
     //- Dependencias del CMS Liferay
-    script(src="https://unpkg.com/vue@2.1.10/dist/vue.js")
-    script(src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js")
+    script(src="//unpkg.com/vue@2.1.10/dist/vue.js")
+    script(src="//www.gstatic.com/firebasejs/3.7.3/firebase.js")
+    script(src='//apis.google.com/js/platform.js', async='', defer='')
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     //- jQuery Librerias
     script(src='js/vendor/vendor_all.js')
     //- Compilado de application.js
-    //- script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js')
+    //- script(src='//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js')
     script(src='js/bundle.js?v=123')

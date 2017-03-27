@@ -1,5 +1,5 @@
-$url: "http://cms.movistar.com.pe";
-//$url: "";
+//$url: "http://cms.movistar.com.pe";
+$url: "";
 
 //Extras
 // @import "extras/bootstrap-sass-3.3.7/bootstrap";
@@ -7,7 +7,7 @@ $url: "http://cms.movistar.com.pe";
 
 //Globales
 @import "globals/fix_liferay";
-@import "globals/typography";
+// @import "globals/typography";
 @import "globals/variables";
 @import "globals/global";
 

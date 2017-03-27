@@ -1,20 +1,25 @@
-#app
-  .container
-    .row
-      h2 Firebase TODO List
-      .col-sm-6
-        form(id="formList", @submit.prevent="addTask(newtask)")
-          input.form-control(type="text", v-model="newtask")
+.container
+  .row
+    h2 Firebase TODO List
+    .col-sm-12
+      form(id="formList", @submit.prevent="addTask(newtask)")
+        .input-group
+          input.form-control(type="text", v-model="newtask", required, :disabled="!autentificado")
           span.input-group-btn
-            button.btn.btn-default(type="default")
+            button.btn.btn-default(type="default", :disabled="!autentificado")
               span.glyphicon.glyphicon-plus
               | Añadir Tarea
-        
-        ul.list-group
-          li.list-group-item.clearfix(v-for="(task, index) in tareas")
-            p.lead(:class="{completado:task.completado}") {{task.titulo}}
-            input(type="text", style="width:100%", v-if="editandoTarea === index", v-model="task.titulo", @blur="editandoTarea = null, editTask(task)")
-            div(style="margin-top:10px")
+      
+      ul.list-group
+        li.list-group-item.clearfix(v-for="(task, index) in tareas")
+          p.lead(:class="{completado:task.completado}")
+            img.avatar.small(:src="task.avatar")
+            | {{task.titulo}}
+            small Creada por: 
+              i {{task.nombre}}
+          input(type="text", style="width:100%", v-if="editandoTarea === index", v-model="task.titulo", @blur="editandoTarea = null, editTask(task)")
+          template(v-if="autentificado")
+            div(style="margin-top:10px", v-if="task.userid == usuarioActivo.uid")
               span.pull-right
                 button.btn.btn-default.btn-xs(@click="editandoTarea = index")
                   span.glyphicon.glyphicon-pencil
@@ -26,7 +31,7 @@
                   span.glyphicon.glyphicon-repeat
                 button.btn.btn-danger.btn-xs(@click="deleteTask(task)")
                   span.glyphicon.glyphicon-remove
-          
+        
 
-      .col-sm-6
-        pre(style="font-size:1rem") {{$data}}
+    //- .col-sm-6
+    //-   pre(style="font-size:1rem") {{$data}}

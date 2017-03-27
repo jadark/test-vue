@@ -7,32 +7,68 @@ var config = {
   };
 firebase.initializeApp(config);
 var db = firebase.database();
-
+    auth = firebase.auth();
+    proveedor = new firebase.auth.GoogleAuthProvider();
 
 var app = new Vue({
   el: '#app',
-  mounted: function() {
+  beforeCreate: function() {
+    // RT DataBase
     db.ref('tareas/').on('value', function(snapshot) {
-      console.log(snapshot.val());
       app.tareas = [];
       var object = snapshot.val();
       for (var propiedad in object) {
         app.tareas.unshift({
           '.key': propiedad,
           'titulo': object[propiedad].titulo,
-          'completado': object[propiedad].completado
+          'completado': object[propiedad].completado,
+          'nombre': object[propiedad].nombre,
+          'avatar': object[propiedad].avatar,
+          'userid': object[propiedad].userid
         })
+      }
+    });
+    // Autentificacion
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        console.info('Contectado:', user);
+        app.autentificado = true;
+        app.usuarioActivo = user;
+        // app.usuarioActivo = {
+        //   'userName': user.displayName,
+        //   'email': user.email,
+        // }
+        // app.usuarioActivo = user.displayName;
+      } else {
+        console.warn('No conectado');
+        app.autentificado = false;
+        app.usuarioActivo = null;
       }
     });
   },
   data: {
     newtask: null,
+    lala:{
+      comopes: 'nadna Apellido'
+    },
     editandoTarea: null,
+    autentificado: false,
+    usuarioActivo: {},
     tareas:[]
   },
   methods:{
+    contectar: function() {
+      firebase.auth().signInWithPopup(proveedor).catch(function(error) {
+        console.error('Error haciendo Login', error);
+      });
+
+    },
+    desconectar: function() {
+      firebase.auth().signOut().catch(function(error) {
+        console.error('Error haciendo logOut', error);
+      });
+    },
     addTask:function(tarea) {
-      console.info(tarea);
       // this.tareas.unshift({
       //   titulo: tarea,
       //   completado: false
@@ -40,7 +76,10 @@ var app = new Vue({
       // this.newtask = null
       db.ref('tareas/').push({
         titulo: tarea,
-        completado: false
+        completado: false,
+        nombre: app.usuarioActivo.displayName,
+        avatar: app.usuarioActivo.photoURL,
+        userid: app.usuarioActivo.uid
       });
       this.newtask = null;
     },

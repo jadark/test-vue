@@ -1,0 +1,38 @@
+.navbar.navbar-default.navbar-fixed-top(role='navigation')
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(target='_blank', href='#') ToDo App
+    .collapse.navbar-collapse      
+      ul.nav.navbar-nav.navbar-right
+        li(v-if="!autentificado")
+          a(href='#', @click="contectar")
+            strong Conectar
+        li.dropdown(v-if="autentificado")
+          a.dropdown-toggle(href='#', data-toggle='dropdown')
+            .avatar.small
+              img(:src="usuarioActivo.photoURL")
+            strong {{usuarioActivo.displayName}}
+            span.glyphicon.glyphicon-chevron-down
+          ul.dropdown-menu
+            li
+              .navbar-login
+                .row
+                  .col-lg-4
+                    p.text-center
+                      .avatar
+                        img(:src="usuarioActivo.photoURL")
+                  .col-lg-8
+                    p.text-left
+                      strong {{usuarioActivo.displayName}}
+                    p.text-left.small {{usuarioActivo.email}}
+            li.divider
+            li
+              .navbar-login.navbar-login-session
+                .row
+                  .col-lg-12
+                    p
+                      a.btn.btn-danger.btn-block(href='#', @click="desconectar") Cerrar Sesion
